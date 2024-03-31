@@ -1,0 +1,33 @@
+<!-- bible_study/templates/bible_study/study_detail.html -->
+{% extends 'base.html' %} {% block content %}
+<div class="m-4">
+  <h1 class="text-center text-4xl">{{ study.title }}</h1>
+  <p class="text-center">Created on: {{ study.created_at|date:"F d, Y" }}</p>
+  <!-- Display other fields as needed -->
+
+  <!-- Example: List associated scriptures and notes -->
+  <h2 class="text-center text-2xl">Scriptures</h2>
+  {% for scripture in study.scriptures.all %}
+  <p class="">{{ scripture.verse }}</p>
+  <!-- List notes for each scripture, if any -->
+  {% for note in scripture.notes.all %}
+  <div class="">{{ note.content }}</div>
+  {% endfor %} {% empty %}
+  <p class="">No scriptures added yet.</p>
+  {% endfor %}
+
+  <h2 class="text-center text-2xl">Notes</h2>
+  {% for note in study.notes.all %}
+  <div class="">{{ note.content }}</div>
+  {% empty %}
+  <p class="">No notes added yet.</p>
+  {% endfor %}
+
+  <!-- Add navigation back to the list of studies -->
+  <a
+    class="btn btn-xl btn-primary"
+    href="{% url 'bible_study:bible_study_list' %}"
+    >Back to Studies List</a
+  >
+  {% endblock %}
+</div>

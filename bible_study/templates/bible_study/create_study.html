@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block content %}
+<form method="post" class="text-center">
+  {% csrf_token %} {{ form.as_p }}
+  <div class="text-center my-4 py-4">
+    <button class="btn btn-xl btn-accent" type="submit">Create Study</button>
+  </div>
+</form>
+{% endblock %}

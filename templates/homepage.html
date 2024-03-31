@@ -1,6 +1,18 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Welcome to Our Site</h1>
-<p>This is the main homepage.</p>
 
-<a href="/bible-study" class="">Bible Studies</a>
+<!-- Updated link to use the url template tag -->
+<div class="text-center">
+  <h1 class="my-2 text-4xl">Welcome to Our Site</h1>
+  <p class="my-2">This is the main homepage.</p>
+  <a
+    href="{% url 'bible_study:bible_study_list' %}"
+    class="btn btn-xl btn-primary"
+    >Bible Studies</a
+  >
+  <a
+    href="{% url 'bible_study:create_study' %}"
+    class="btn btn-xl btn-secondary"
+    >New Study</a
+  >
+</div>
 {% endblock %}

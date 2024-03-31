@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!-- Assumes you have a base template -->
+
+{% block content %}
+<div class="text-center mx-2 my-6 pb-6">
+  <h2 class="text-4xl mb-6">My Bible Studies</h2>
+  <ul>
+    {% for study in studies %}
+    <!-- Update the href attribute to dynamically generate the URL for each study's detail view -->
+    <li class="my-1">
+      <a
+        href="{% url 'bible_study:study_detail' study.pk %}"
+        class="btn btn-accent w-full"
+        >{{ study.title }}</a
+      >
+    </li>
+    <!-- Add more details you want to show about each study -->
+    {% empty %}
+    <li>No studies found.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

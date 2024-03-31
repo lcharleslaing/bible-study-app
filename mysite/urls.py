@@ -8,5 +8,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("", TemplateView.as_view(template_name="homepage.html"), name="homepage"),
-    path("bible-study/", include("bible_study.urls", namespace="bible_study")),
+    path("bible-study/", include("bible_study.urls")),  # This line is crucial
 ]
