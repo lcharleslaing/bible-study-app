@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="">
+    {% block accounts_content %}
+    {# This block will be overridden in child templates #}
+    {% endblock accounts_content %}
+</div>
+{% endblock %}

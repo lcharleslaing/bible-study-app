@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ SITE_NAME }}</title>
+    <!-- Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <nav class="bg-white p-4 shadow">
+      <div class="container mx-auto">
+        <a class="text-xl font-bold text-gray-800" href="{% url 'homepage' %}"
+          >{{ SITE_NAME }}</a
+        >
+
+        <div class="space-x-4 float-right">
+          <a
+            class="text-gray-600 hover:text-gray-800"
+            href="{% url 'accounts:index' %}"
+            >Accounts</a
+          >
+          {% if user.is_authenticated %}
+          <a
+            class="text-gray-600 hover:text-gray-800"
+            href="{% url 'accounts:logout' %}"
+            >Logout</a
+          >
+
+          {% else %}
+          <a
+            class="text-gray-600 hover:text-gray-800"
+            href="{% url 'accounts:login' %}"
+            >Login</a
+          >
+          <a
+            class="text-gray-600 hover:text-gray-800"
+            href="{% url 'accounts:register' %}"
+            >Register</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto mt-5">{% block content %} {% endblock %}</div>
+  </body>
+</html>
